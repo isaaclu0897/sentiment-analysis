@@ -9,15 +9,7 @@ Created on Tue Mar 27 19:38:47 2018
 import requests 
 from bs4 import BeautifulSoup 
 import jieba
-
-def chpage(url, jump_page=1): 
-    index = [index_num for index_num in url if index_num.isdigit()] 
-    index[-1] = str(int(index[-1]) + jump_page) 
-    url = url.split('&') 
-    url[-1] = ('page={}'.format(index[-1])) 
-    url = '&'.join(url) 
-    return url 
-
+from nbtool import change_page, parse_url
 
 url = "https://movies.yahoo.com.tw/movieinfo_review.html/id=6953?sort=update_ts&order=desc&page=1" 
 for i in range(3):# 這邊決定換頁換幾次 
@@ -53,7 +45,7 @@ for i in range(3):# 這邊決定換頁換幾次
                              'comment_sep':word,
                              'com':coms_sep}) 
 # print (comment.text) 
-    url = chpage(url) # 頁面資訊分析完後，換頁 
+    url = change_page(url) # 頁面資訊分析完後，換頁 
     # 依次打印每個頁面 
     for i in (articles): 
         print('評論：\n', i['comment'])
