@@ -14,7 +14,7 @@ from snownlp import SnowNLP
 
 url = "https://movies.yahoo.com.tw/movieinfo_review.html/id=6953?sort=update_ts&order=desc&page=1" 
 item = []
-for i in range(1):# 這邊決定換頁換幾次 
+for i in range(11):# 這邊決定換頁換幾次 
     print(url)# 確定當前頁面 
     soup = parse_url(url)
 
@@ -40,6 +40,12 @@ for i in range(1):# 這邊決定換頁換幾次
 #                     'comment' : comment,
 #                     'com_sep' : comment_sep}) 
     url = change_page(url)
-for i in item:
-    print(i[2], '\n', i[3], '\n', i[4], '\n', i[5])
-    print('\n')
+#for i in item:
+#    print(i[2], '\n', i[3], '\n', i[4], '\n', i[5])
+#    print('\n')
+    
+#a = [ i[0] for i in item]
+#for i in a:
+#    if a.count(i) != 1:
+#        print (i, a.count(i)) 
+#        break
