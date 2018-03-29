@@ -53,10 +53,22 @@ def parse_url(url, specific=False, href=None):
     return soup
 
 # 換頁函數
-def change_page(url, jump_page=1): 
-    index = [index_num for index_num in url if index_num.isdigit()] 
-    index[-1] = str(int(index[-1]) + jump_page) 
-    url = url.split('&') 
-    url[-1] = ('page={}'.format(index[-1])) 
-    url = '&'.join(url) 
-    return url 
+#def change_page(url, jump_page=1): 
+#    index = [index_num for index_num in url if index_num.isdigit()] 
+#    index[-1] = str(int(index[-1]) + jump_page) 
+#    url = url.split('&') 
+#    url[-1] = ('page={}'.format(index[-1])) 
+#    url = '&'.join(url) 
+#    return url 
+def change_page(url, jump_page=1):   
+    url = url.split('&page=') 
+    index = ''.join([index_num for index_num in url[-1]])
+    index = str(int(index) + jump_page)
+    url[-1] = ('{}'.format(index))   
+    url = '&page='.join(url)   
+    return url
+#url = "https://movies.yahoo.com.tw/movieinfo_review.html/id=6953?sort=update_ts&order=desc&page=1" 
+#for i in range(20):
+#    url = chpage(url)
+#    print(url)
+    
